@@ -2,6 +2,7 @@
   "name": "vidly-backend",
   "version": "1.0.0",
   "license": "ISC",
+  "repository": "https://github.com/perpetual-pelican/vidly-backend.git",
   "description": "backend api for the vidly web app",
   "main": "index.js",
   "directories": {
