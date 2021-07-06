@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "ISC",
   "repository": "https://github.com/perpetual-pelican/vidly-backend.git",
-  "description": "backend api for the vidly web app",
+  "description": "Node-based backend api for video rental processing - built with Express and MongoDB/Mongoose",
   "main": "index.js",
   "directories": {
     "test": "tests"
