@@ -87,7 +87,7 @@ router.delete(
           rental = await rental.remove({ session });
 
           await Movie.updateOne(
-            { _id: rental.movie.id },
+            { _id: rental.movie._id },
             { $inc: { numberInStock: 1 } },
             { session }
           );
