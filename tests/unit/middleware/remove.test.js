@@ -39,7 +39,7 @@ describe('remove middleware', () => {
 
     await remove(Model)(req, res, next);
 
-    expect(send.mock.calls[0][0]).toMatch(new RegExp(modelName));
+    expect(res.status).toHaveBeenCalledWith(404);
   });
 
   it('should set a message with modelName if id is not found', async () => {
