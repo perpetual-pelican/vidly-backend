@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../startup/app');
+const app = require('../../src/startup/app');
 
 describe('home', () => {
   it('should return the home page', async () => {

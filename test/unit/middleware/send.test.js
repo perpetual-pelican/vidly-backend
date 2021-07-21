@@ -1,4 +1,4 @@
-const send = require('../../../middleware/send');
+const send = require('../../../src/middleware/send');
 
 describe('send middleware', () => {
   it('should call next if document is found', async () => {

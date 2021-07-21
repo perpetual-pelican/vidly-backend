@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const test = require('../testHelper');
-const app = require('../../startup/app');
-const { User } = require('../../models/user');
-const { Customer } = require('../../models/customer');
-const { Genre } = require('../../models/genre');
-const { Movie } = require('../../models/movie');
-const { Rental } = require('../../models/rental');
+const app = require('../../src/startup/app');
+const { User } = require('../../src/models/user');
+const { Customer } = require('../../src/models/customer');
+const { Genre } = require('../../src/models/genre');
+const { Movie } = require('../../src/models/movie');
+const { Rental } = require('../../src/models/rental');
 
 const { getAll, getOne, post, del } = test.request;
 

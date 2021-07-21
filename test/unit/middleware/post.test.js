@@ -1,4 +1,4 @@
-const post = require('../../../middleware/post');
+const post = require('../../../src/middleware/post');
 
 describe('post middleware', () => {
   let doc;

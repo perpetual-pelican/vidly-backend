@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const winston = require('winston');
-const { dbString, dbOptions } = require('../../../startup/config');
-const connectToDB = require('../../../startup/db');
+const { dbString, dbOptions } = require('../../../src/startup/config');
+const connectToDB = require('../../../src/startup/db');
 
 describe('db startup', () => {
   beforeEach(() => {

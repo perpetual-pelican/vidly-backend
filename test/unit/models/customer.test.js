@@ -2,7 +2,7 @@ const {
   validatePost,
   validatePut,
   bounds,
-} = require('../../../models/customer');
+} = require('../../../src/models/customer');
 
 describe('Customer model', () => {
   let customer;

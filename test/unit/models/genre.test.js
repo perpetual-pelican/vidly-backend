@@ -1,4 +1,4 @@
-const { validate, bounds } = require('../../../models/genre');
+const { validate, bounds } = require('../../../src/models/genre');
 
 describe('Genre model', () => {
   describe('validate', () => {

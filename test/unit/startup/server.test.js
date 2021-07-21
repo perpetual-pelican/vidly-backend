@@ -1,5 +1,5 @@
 const winston = require('winston');
-const startServer = require('../../../startup/server');
+const startServer = require('../../../src/startup/server');
 
 describe('server startup', () => {
   let server;
@@ -14,7 +14,7 @@ describe('server startup', () => {
   });
 
   it('should listen on process.env.PORT if it is defined', () => {
-    const app = require('../../../startup/app');
+    const app = require('../../../src/startup/app');
     const { listen } = app;
     app.listen = jest.fn((port) => {
       return listen(port);

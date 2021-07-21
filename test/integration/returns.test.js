@@ -1,9 +1,9 @@
 const moment = require('moment');
 const test = require('../testHelper');
-const app = require('../../startup/app');
-const { User } = require('../../models/user');
-const { Movie } = require('../../models/movie');
-const { Rental } = require('../../models/rental');
+const app = require('../../src/startup/app');
+const { User } = require('../../src/models/user');
+const { Movie } = require('../../src/models/movie');
+const { Rental } = require('../../src/models/rental');
 
 const { post } = test.request;
 

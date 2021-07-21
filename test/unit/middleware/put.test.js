@@ -1,4 +1,4 @@
-const put = require('../../../middleware/put');
+const put = require('../../../src/middleware/put');
 
 describe('put middleware', () => {
   let doc;

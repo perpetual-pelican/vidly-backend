@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { User } = require('../../../models/user');
-const auth = require('../../../middleware/auth');
+const { User } = require('../../../src/models/user');
+const auth = require('../../../src/middleware/auth');
 
 describe('auth middleware', () => {
   let user;

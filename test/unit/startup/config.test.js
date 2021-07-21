@@ -15,13 +15,13 @@ describe('config startup', () => {
     delete process.env.vidly_jwtPrivateKey;
 
     expect(() => {
-      require('../../../startup/config');
+      require('../../../src/startup/config');
     }).toThrow();
   });
 
   it('should not throw if jwtPrivateKey env variable is set', () => {
     expect(() => {
-      require('../../../startup/config');
+      require('../../../src/startup/config');
     }).not.toThrow();
   });
 
@@ -29,7 +29,7 @@ describe('config startup', () => {
     const os = require('os');
     os.type = jest.fn().mockReturnValue('Linux');
 
-    const { dbString } = require('../../../startup/config');
+    const { dbString } = require('../../../src/startup/config');
 
     expect(dbString).toMatch(/localhost/);
   });
@@ -38,7 +38,7 @@ describe('config startup', () => {
     const os = require('os');
     os.type = jest.fn().mockReturnValue('Windows_NT');
 
-    const { dbString } = require('../../../startup/config');
+    const { dbString } = require('../../../src/startup/config');
 
     expect(dbString).toMatch(new RegExp(os.hostname()));
   });
@@ -46,13 +46,13 @@ describe('config startup', () => {
   it('should add "development" to dbName if NODE_ENV is undefined', () => {
     delete process.env.NODE_ENV;
 
-    const { dbOptions } = require('../../../startup/config');
+    const { dbOptions } = require('../../../src/startup/config');
 
     expect(dbOptions.dbName).toMatch(/development/);
   });
 
   it('should add NODE_ENV to dbName if it is defined', () => {
-    const { dbOptions } = require('../../../startup/config');
+    const { dbOptions } = require('../../../src/startup/config');
 
     expect(dbOptions.dbName).toMatch(/test/);
   });

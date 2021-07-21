@@ -1,4 +1,4 @@
-const validate = require('../../../middleware/validate');
+const validate = require('../../../src/middleware/validate');
 
 describe('validate middleware', () => {
   let validator;

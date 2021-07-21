@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const test = require('../testHelper');
-const app = require('../../startup/app');
-const { User } = require('../../models/user');
-const { Genre } = require('../../models/genre');
-const { Movie } = require('../../models/movie');
+const app = require('../../src/startup/app');
+const { User } = require('../../src/models/user');
+const { Genre } = require('../../src/models/genre');
+const { Movie } = require('../../src/models/movie');
 
 const { getAll, getOne, post, put, del } = test.request;
 

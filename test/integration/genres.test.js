@@ -1,7 +1,7 @@
 const test = require('../testHelper');
-const app = require('../../startup/app');
-const { User } = require('../../models/user');
-const { Genre } = require('../../models/genre');
+const app = require('../../src/startup/app');
+const { User } = require('../../src/models/user');
+const { Genre } = require('../../src/models/genre');
 
 const { getAll, getOne, post, put, del } = test.request;
 

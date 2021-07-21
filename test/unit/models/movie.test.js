@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-const { validatePost, validatePut, bounds } = require('../../../models/movie');
+const {
+  validatePost,
+  validatePut,
+  bounds,
+} = require('../../../src/models/movie');
 
 describe('Movie model', () => {
   let movie;

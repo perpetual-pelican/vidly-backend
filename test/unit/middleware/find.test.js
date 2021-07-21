@@ -1,4 +1,4 @@
-const find = require('../../../middleware/find');
+const find = require('../../../src/middleware/find');
 
 describe('find middleware', () => {
   const modelName = 'Document';

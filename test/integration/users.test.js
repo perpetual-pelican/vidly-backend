@@ -1,8 +1,8 @@
 const request = require('supertest');
 const bcrypt = require('bcryptjs');
 const test = require('../testHelper');
-const app = require('../../startup/app');
-const { User } = require('../../models/user');
+const app = require('../../src/startup/app');
+const { User } = require('../../src/models/user');
 
 const { getAll, post } = test.request;
 

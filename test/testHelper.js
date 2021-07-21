@@ -3,7 +3,7 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const winston = require('winston');
-const { dbString, dbOptions } = require('../startup/config');
+const { dbString, dbOptions } = require('../src/startup/config');
 
 let route;
 let app;

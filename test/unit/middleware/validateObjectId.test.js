@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validateObjectId = require('../../../middleware/validateObjectId');
+const validateObjectId = require('../../../src/middleware/validateObjectId');
 
 describe('validateObjectId middleware', () => {
   let req;

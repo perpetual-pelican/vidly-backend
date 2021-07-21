@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
-const { Rental, validate } = require('../../../models/rental');
+const { Rental, validate } = require('../../../src/models/rental');
 
 describe('Rental model', () => {
   let rental;

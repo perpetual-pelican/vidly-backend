@@ -1,4 +1,4 @@
-const remove = require('../../../middleware/remove');
+const remove = require('../../../src/middleware/remove');
 
 describe('remove middleware', () => {
   const modelName = 'Document';

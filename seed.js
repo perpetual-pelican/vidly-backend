@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { dbString, dbOptions } = require('./startup/config');
-const { Genre } = require('./models/genre');
-const { Movie } = require('./models/movie');
+const { dbString, dbOptions } = require('./src/startup/config');
+const { Genre } = require('./src/models/genre');
+const { Movie } = require('./src/models/movie');
 
 const data = [
   {

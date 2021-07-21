@@ -1,5 +1,5 @@
 const winston = require('winston');
-const errorMiddleware = require('../../../middleware/error');
+const errorMiddleware = require('../../../src/middleware/error');
 
 winston.error = jest.fn();
 

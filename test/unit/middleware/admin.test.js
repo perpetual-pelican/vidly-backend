@@ -1,5 +1,5 @@
-const { User } = require('../../../models/user');
-const admin = require('../../../middleware/admin');
+const { User } = require('../../../src/models/user');
+const admin = require('../../../src/middleware/admin');
 
 describe('admin middleware', () => {
   let req;

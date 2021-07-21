@@ -1,4 +1,4 @@
-const { dbString } = require('../../../startup/config');
+const { dbString } = require('../../../src/startup/config');
 
 jest.mock('winston-mongodb', () => {
   const winston = require('winston');
@@ -14,7 +14,7 @@ describe('logging startup', () => {
 
   describe('error handlers', () => {
     it('should log if an uncaughtException event is encountered', () => {
-      require('../../../startup/logging');
+      require('../../../src/startup/logging');
 
       const winston = require('winston');
       winston.exitOnError = false;
@@ -31,7 +31,7 @@ describe('logging startup', () => {
     });
 
     it('should throw an error if an unhandledRejection event is encountered', async () => {
-      require('../../../startup/logging');
+      require('../../../src/startup/logging');
 
       const unhandledRejection = new Error('fake unhandled rejection');
 
@@ -92,7 +92,7 @@ describe('logging startup', () => {
       it('should add Console transports if NODE_ENV is development or not set', () => {
         delete process.env.NODE_ENV;
 
-        require('../../../startup/logging');
+        require('../../../src/startup/logging');
 
         expect(winston.configure).toHaveBeenCalledTimes(1);
         expect(winston.configure).toHaveBeenCalledWith(
@@ -139,7 +139,7 @@ describe('logging startup', () => {
       it('should not use Console transports if NODE_ENV is production', () => {
         process.env.NODE_ENV = 'production';
 
-        require('../../../startup/logging');
+        require('../../../src/startup/logging');
 
         expect(winston.configure).not.toHaveBeenCalled();
         expect(winston.format.prettyPrint).not.toHaveBeenCalled();
@@ -192,7 +192,7 @@ describe('logging startup', () => {
       it('should include error stack in log if stack is provided', () => {
         process.env.NODE_ENV = 'development';
 
-        require('../../../startup/logging');
+        require('../../../src/startup/logging');
 
         mockLog.stack = 'error info';
 
@@ -207,7 +207,7 @@ describe('logging startup', () => {
       it('should not include stack in log if stack is not provided', () => {
         process.env.NODE_ENV = 'development';
 
-        require('../../../startup/logging');
+        require('../../../src/startup/logging');
 
         expect(winston.format.printf.mock.calls[0][0](mockLog)).toMatch(
           /logtype/,
