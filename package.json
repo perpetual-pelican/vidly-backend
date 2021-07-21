@@ -5,9 +5,6 @@
   "repository": "https://github.com/perpetual-pelican/vidly-backend.git",
   "description": "Node-based backend api for video rental processing - built with Express and MongoDB/Mongoose",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "db": "npx run-rs --mongod",
     "seed": "node seed.js",
