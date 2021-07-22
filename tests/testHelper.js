@@ -3,7 +3,6 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const winston = require('winston');
-const { dbString, dbOptions } = require('../startup/config');
 
 let route;
 let app;
@@ -18,19 +17,17 @@ module.exports.setup = function setup(routeName, appToTest) {
   app = appToTest;
 
   beforeAll(async () => {
-    await mongoose.connect(dbString, {
-      ...dbOptions,
-      dbName: `${dbOptions.dbName}_routes_${route}`,
+    await mongoose.connect(process.env.MONGO_URI, {
+      dbName: `vidly_test_${route}`,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     winston.loggers.get = jest.fn().mockReturnValue({ error: jest.fn() });
     winston.error = jest.fn();
   });
 
   afterAll(async () => {
-    const results = Object.keys(mongoose.connection.collections).map((name) => {
-      return mongoose.connection.collections[name].deleteMany();
-    });
-    await Promise.all(results);
+    await mongoose.connection.dropDatabase();
     await mongoose.disconnect();
   });
 };
