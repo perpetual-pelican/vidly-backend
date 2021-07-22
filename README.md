@@ -6,10 +6,6 @@ Node-based backend api for video rental processing - built with Express and Mong
 ### Install Node.js
  - https://nodejs.org/en/download/
 
-### Install MongoDB Community Edition
- - https://docs.mongodb.com/manual/installation/
- - Make sure the MongoDB daemon (mongod) is running or the project won't work
-
 ### Install Dependencies
 1. Clone the repository
 2. Open a terminal in the repository directory
@@ -25,9 +21,10 @@ Node-based backend api for video rental processing - built with Express and Mong
 
 ### Start DB
  - Use the command `npm run db` to start the database
- - A few messages will be displayed, indicating that a replica set is being started
+ - This may take up to a minute or so on the first run since it has to install and setup mongodb first
+ - A few messages will then be displayed, indicating that a replica set is being started
  - After several seconds, the database will be ready when it says "Connected to oplog"
- - Once the database is running, open a new terminal for running the remaining commands
+ - Once the database is running, open a new terminal to run the remaining commands
 
 ### Populate DB
  - Use `npm run seed` to fill the database with some basic dummy data
