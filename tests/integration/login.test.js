@@ -1,8 +1,8 @@
-const config = require('config');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const test = require('../testHelper');
 const app = require('../../startup/app');
+const { jwtPrivateKey } = require('../../startup/config');
 const { User } = require('../../models/user');
 
 const { post } = test.request;
@@ -69,7 +69,7 @@ describe('/api/login', () => {
     it('should return a valid token if request is valid', async () => {
       const res = await post(req);
 
-      const decoded = jwt.verify(res.text, config.get('jwtPrivateKey'));
+      const decoded = jwt.verify(res.text, jwtPrivateKey);
 
       expect(res.status).toBe(200);
       expect(decoded).toHaveProperty('_id');

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('config');
 const jwt = require('jsonwebtoken');
+const { jwtPrivateKey } = require('../../../startup/config');
 const { User, validate, bounds } = require('../../../models/user');
 
 describe('User model', () => {
@@ -11,7 +11,7 @@ describe('User model', () => {
         isAdmin: true,
       };
       const token = new User(user).generateAuthToken();
-      const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
+      const decoded = jwt.verify(token, jwtPrivateKey);
 
       expect(decoded).toMatchObject(user);
     });
