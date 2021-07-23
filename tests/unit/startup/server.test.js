@@ -30,7 +30,7 @@ describe('server startup', () => {
     server = startServer();
 
     expect(winston.info).toHaveBeenCalled();
-    expect(winston.info.mock.calls[0][0]).toMatch(/port.*3000/);
+    expect(winston.info.mock.calls[0][0]).toMatch(/port.*4000/);
   });
 
   it('should return a listening server', () => {

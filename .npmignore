@@ -1,0 +1,16 @@
+.eslintignore
+.eslintrc*
+.gitattributes
+.gitignore
+.npmignore
+.prettierignore
+.husky
+.jest
+.vscode
+coverage
+data
+logs
+node_modules
+seed.js
+tests
+vidly-backend*.tgz

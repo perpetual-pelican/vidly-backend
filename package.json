@@ -9,7 +9,7 @@
     "test": "tests"
   },
   "scripts": {
-    "db": "npx run-rs --mongod",
+    "db": "npx run-rs -v 4.4.6",
     "seed": "node seed.js",
     "start": "node index.js",
     "test": "jest --coverage",
@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "config": "^3.3.6",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.4.0",
@@ -41,6 +40,7 @@
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
+    "mongodb-memory-server": "^7.3.0",
     "prettier": "2.3.1",
     "pretty-quick": "^3.1.1",
     "run-rs": "^0.7.4",
@@ -50,8 +50,15 @@
     "node": ">=8.10.0",
     "npm": ">=5.2.0"
   },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "4.4.6"
+    }
+  },
   "jest": {
     "testEnvironment": "node",
+    "globalSetup": "./.jest/globalSetup.js",
+    "globalTeardown": "./.jest/globalTeardown.js",
     "setupFiles": [
       "./.jest/setEnvVars.js"
     ],
