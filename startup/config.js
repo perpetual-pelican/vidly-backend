@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
   jwtPrivateKey: process.env.vidly_jwtPrivateKey,
+  logDir: process.env.npm_package_config_vidlyBackend_logFolder,
   dbString,
   dbOptions: {
     dbName: `vidly_${env}`,

@@ -1,9 +1,10 @@
 const winston = require('winston');
 require('winston-mongodb');
-const { dbString } = require('./config');
+const { dbString, logDir } = require('./config');
 
 const env = process.env.NODE_ENV || 'development';
 
+// If env is development, then prettyPrint logs in the terminal with timestamps
 if (env === 'development') {
   winston.configure({ format: winston.format.prettyPrint() });
   winston.exceptions.handle(new winston.transports.Console());
@@ -28,7 +29,7 @@ if (env === 'development') {
   );
 }
 
-const logFolder = env === 'production' ? 'logs' : `logs/${env}`;
+const logFolder = logDir ? `${logDir}/logs` : 'logs';
 
 winston.exceptions.handle(
   new winston.transports.File({
