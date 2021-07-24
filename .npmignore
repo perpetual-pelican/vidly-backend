@@ -12,5 +12,5 @@ data
 logs
 node_modules
 seed.js
-tests
+**/tests
 vidly-backend*.tgz
