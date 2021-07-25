@@ -6,7 +6,7 @@
   "description": "Node-based backend api for video rental processing - built with Express and MongoDB/Mongoose",
   "main": "src/index.js",
   "directories": {
-    "test": "src/tests"
+    "test": "tests"
   },
   "scripts": {
     "db": "npx run-rs -v 4.4.6",
