@@ -25,6 +25,26 @@ describe('config startup', () => {
     }).not.toThrow();
   });
 
+  it('should use dbString with process.env.vidly_hosts if set and replicaSet=vidly_rs if process.env.vidly_rs not set', () => {
+    process.env.vidly_hosts = 'provided_hosts';
+
+    const { dbString } = require('../../../src/startup/config');
+    delete process.env.vidly_hosts;
+
+    expect(dbString).toMatch(/provided_hosts\/\?replicaSet=vidly_rs/);
+  });
+
+  it('should use dbString with process.env.vidly_hosts and process.env.vidly_rs if both are set', () => {
+    process.env.vidly_hosts = 'provided_hosts';
+    process.env.vidly_rs = 'provided_rs';
+
+    const { dbString } = require('../../../src/startup/config');
+    delete process.env.vidly_hosts;
+    delete process.env.vidly_rs;
+
+    expect(dbString).toMatch(/provided_hosts\/\?replicaSet=provided_rs/);
+  });
+
   it('should use localhost for dbString if os type is not Windows', () => {
     const os = require('os');
     os.type = jest.fn().mockReturnValue('Linux');
