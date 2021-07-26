@@ -16,9 +16,13 @@ module.exports.setup = function setup(routeName, appToTest) {
   route = routeName;
   app = appToTest;
 
+  jest.setTimeout(30 * 1000);
+
   beforeAll(async () => {
     await mongoose.connect(process.env.MONGO_URI, {
       dbName: `vidly_test_${route}`,
+      useCreateIndex: true,
+      useFindAndModify: false,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
