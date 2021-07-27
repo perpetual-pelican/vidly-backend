@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  server:
+    image: vidly_server
+    container_name: vidly_server
+    depends_on:
+      - mongo1
+      - mongo2
+      - mongo3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: prod
+    ports:
+      - 4000:4000
+    environment:
+      - NODE_ENV=production
+      - vidly_jwtPrivateKey=privateKey
+      - vidly_hosts=vidly_mongo1:27017,vidly_mongo2:27017,vidly_mongo3:27017
+    networks:
+      - mongo-cluster
+
+  mongo1:
+    image: mongo:4.4.6
+    container_name: vidly_mongo1
+    hostname: vidly_mongo1
+    ports:
+      - 30001:27017
+    volumes:
+      - mongo1:/data/db
+      - mongo1_config:/data/configdb
+    networks:
+      - mongo-cluster
+    healthcheck:
+      test: test $$(echo "rs.status().ok" | mongo --quiet) -eq 1
+      interval: 30s
+      start_period: 30s
+    command: ['--bind_ip_all', '--replSet', 'vidly_rs']
+
+  mongo2:
+    image: mongo:4.4.6
+    container_name: vidly_mongo2
+    hostname: vidly_mongo2
+    depends_on:
+      - mongo1
+    ports:
+      - 30002:27017
+    volumes:
+      - mongo2:/data/db
+      - mongo2_config:/data/configdb
+    networks:
+      - mongo-cluster
+    command: ['--bind_ip_all', '--replSet', 'vidly_rs']
+
+  mongo3:
+    image: mongo:4.4.6
+    container_name: vidly_mongo3
+    hostname: vidly_mongo3
+    depends_on:
+      - mongo1
+    ports:
+      - 30003:27017
+    volumes:
+      - mongo3:/data/db
+      - mongo3_config:/data/configdb
+    networks:
+      - mongo-cluster
+    command: ['--bind_ip_all', '--replSet', 'vidly_rs']
+
+  mongo-setup:
+    image: vidly_mongo-setup
+    container_name: vidly_mongo-setup
+    depends_on:
+      - mongo1
+      - mongo2
+      - mongo3
+    build:
+      context: .
+      dockerfile: ./mongo-setup/Dockerfile
+    volumes:
+      - mongo-setup:/data/db
+      - mongo-setup_config:/data/configdb
+    networks:
+      - mongo-cluster
+
+volumes:
+  mongo1:
+  mongo1_config:
+  mongo2:
+  mongo2_config:
+  mongo3:
+  mongo3_config:
+  mongo-setup:
+  mongo-setup_config:
+
+networks:
+  mongo-cluster:
