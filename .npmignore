@@ -1,3 +1,4 @@
+.dockerignore
 .eslintignore
 .eslintrc*
 .gitattributes
@@ -9,7 +10,10 @@
 .vscode
 coverage
 data
+docker-compose*
+*Dockerfile*
 logs
+mongo-setup
 node_modules
 seed.js
 **/tests
